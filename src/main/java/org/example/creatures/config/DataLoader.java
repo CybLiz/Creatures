@@ -4,10 +4,12 @@ import org.example.creatures.entity.Creature;
 import org.example.creatures.repository.CreatureRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Random;
 import java.util.stream.IntStream;
 
+@Configuration
 public class DataLoader {
 
     @Bean
@@ -15,7 +17,7 @@ public class DataLoader {
         return args -> {
             Random random = new Random();
 
-            IntStream.rangeClosed(1,50).forEach(i -> {
+            IntStream.rangeClosed(1,20).forEach(i -> {
                 Creature creature = new Creature();
                 creature.setName("User -"+i);
                 creature.setAge(random.nextInt(100) + 1);

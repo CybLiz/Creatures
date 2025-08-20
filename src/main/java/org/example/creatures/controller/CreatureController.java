@@ -45,11 +45,9 @@ public ResponseEntity<String> delete (@PathVariable Integer id) {
         creatureService.deleteCreature(id);
         return ResponseEntity.ok(String.format("Creature with id %d deleted", id));
 }
-
     @GetMapping("/page")
-    public Page<Creature> findPage(@RequestParam int page, @RequestParam int size) {
-        return creatureService.getPage(PageRequest.of(page, size));
-
+    public ResponseEntity<Page<Creature>> findPage(@RequestParam int page, @RequestParam int size) {
+        return ResponseEntity.ok(creatureService.getPage(PageRequest.of(page, size)));
     }
 
 }
